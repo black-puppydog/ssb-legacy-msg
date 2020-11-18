@@ -7,7 +7,7 @@ use crypto_hash::{Algorithm, Hasher};
 
 use ssb_legacy_msg_data::{legacy_length, to_weird_encoding};
 use ssb_multiformats::{
-    multihash::{Multihash, Target},
+    multihash::Multihash,
     multikey::{Multikey, Multisig},
 };
 
@@ -30,7 +30,7 @@ pub fn hash_and_length(signing_encoding: &str) -> (Multihash, usize) {
         data[i] = digest[i];
     }
 
-    (Multihash::from_sha256(data, Target::Message), len)
+    (Multihash::Message(data), len)
 }
 
 /// Compute the hash of the given signing encoding.
@@ -47,7 +47,7 @@ pub fn hash(signing_encoding: &str) -> Multihash {
         data[i] = digest[i];
     }
 
-    Multihash::from_sha256(data, Target::Message)
+    Multihash::Message(data)
 }
 
 /// Compute the length of the given signing encoding.
