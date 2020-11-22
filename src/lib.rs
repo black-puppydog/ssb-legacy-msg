@@ -23,7 +23,7 @@ pub enum Content<T> {
 /// A complete ssb message, signed and all.
 ///
 /// This does not check whether the `content` value is valid.
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Message<T> {
     pub previous: Option<Multihash>,
     pub author: Multikey,
